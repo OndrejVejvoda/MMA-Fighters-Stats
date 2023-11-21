@@ -70,7 +70,7 @@ def get_fighters_stats(url):
         return None
 
 
-def main():
+def scrape_data():
     column_names = ["first_name", "last_name", "nickname", "wins", "loses", "draws", "height", "weight", "reach", "stance" ,"born", "slpm", "str_acc", "sapm","str_def","td_avg","td_acc","td_def","sub_avg"]
     chars = list(string.ascii_lowercase)
     urls = get_hyperlinks(chars)
