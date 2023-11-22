@@ -1,0 +1,27 @@
+name: Scrape and Upload Data to GCS
+
+on: [push]
+  #schedule:
+    #- cron: '0 0 * * 0'  # Runs at 00:00 every Sunday
+
+jobs:
+  scrape-and-upload:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.12'  # Use your Python version
+
+    - name: Install Dependencies
+      run: |
+        pip install requests pandas beautifulsoup4 google-cloud-storage
+
+    - name: Run Scrape Script and Upload Data
+      env:
+        GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
+      run: |
+        python -m load_to_gcs.py  # Replace with your module/script command
