@@ -13,19 +13,19 @@ def upload_to_gcs(bucket_name, blob_name):
     fighters_data = scrape_data()  # Assuming this function returns the required data
     csv_data = fighters_data.to_csv(index=False)
     
-    try:
+    #try:
         # Authenticate and initialize the client
         #os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = service_account_key_path
-        storage_client = storage.Client()
+    storage_client = storage.Client()
         
         # Get the bucket object and upload the data
-        bucket = storage_client.get_bucket(bucket_name)
-        blob = bucket.blob(blob_name)
-        blob.upload_from_string(csv_data, content_type='text/csv')
+    bucket = storage_client.get_bucket(bucket_name)
+    blob = bucket.blob(blob_name)
+    blob.upload_from_string(csv_data, content_type='text/csv')
 
-        print(f"File uploaded to {bucket_name}/{blob_name}")
-    except Exception as e:
-        print(f"Failed to upload the file: {str(e)}")
+      #  print(f"File uploaded to {bucket_name}/{blob_name}")
+    #except Exception as e:
+     #   print(f"Failed to upload the file: {str(e)}")
 
 if __name__ == "__main__":
     bucket_name = os.getenv('BUCKET_NAME')
