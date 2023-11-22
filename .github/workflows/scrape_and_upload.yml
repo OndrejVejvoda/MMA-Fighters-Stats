@@ -18,7 +18,7 @@ jobs:
 
     - name: Install Dependencies
       run: |
-        pip install -r requirements.txt
+        pip install requests pandas beautifulsoup4 google-cloud-storage
         
     - name: Setup GCP Credentials
       run: |
