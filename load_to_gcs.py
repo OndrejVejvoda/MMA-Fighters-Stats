@@ -31,5 +31,7 @@ def upload_to_gcs(bucket_name, blob_name):
 
 if __name__ == "__main__":
     bucket_name = os.getenv('BUCKET_NAME')
+    print(bucket_name)
     blob_name = os.getenv('BLOB_NAME')
+    print(blob_name)
     upload_to_gcs(bucket_name, blob_name)
