@@ -27,3 +27,6 @@ def upload_to_gcs():
         print(f"File uploaded to {bucket_name}/{blob_name}")
     except Exception as e:
         print(f"Failed to upload the file: {str(e)}")
+
+if __name__ == "__main__":
+    upload_to_gcs()
