@@ -24,4 +24,4 @@ jobs:
       env:
         GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
       run: |
-        python -m load_to_gcs.py  # Replace with your module/script command
+        python -m load_to_gcs  # Replace with your module/script command
