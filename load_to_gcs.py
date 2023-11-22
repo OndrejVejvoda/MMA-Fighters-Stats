@@ -18,7 +18,8 @@ def upload_to_gcs():
         os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = service_account_key_path
         storage_client = storage.Client()
         
-        storage_client.list_buckets()
+        buckets = storage_client.list_buckets()
+        print(buckets)
         # Get the bucket object and upload the data
         bucket = storage_client.get_bucket(bucket_name)
         blob = bucket.blob(blob_name)
