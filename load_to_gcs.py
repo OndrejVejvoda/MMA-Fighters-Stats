@@ -3,10 +3,10 @@ import pandas as pd
 from google.cloud import storage
 from scrape_to_csv import *
 
-def upload_to_gcs():
+def upload_to_gcs(bucket_name, blob_name):
     # Configuration (better to move this to environment variables or a config file)
-    bucket_name = 'fight_stats_data'
-    blob_name = 'raw/raw_fighters.csv'
+    #bucket_name = 'fight_stats_data'
+    #blob_name = 'raw/raw_fighters.csv'
     #service_account_key_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
 
      # Get data and convert to CSV format
@@ -28,6 +28,6 @@ def upload_to_gcs():
         print(f"Failed to upload the file: {str(e)}")
 
 if __name__ == "__main__":
-    #bucket_name = os.getenv('BUCKET_NAME')
-    #blob_name = os.getenv('BLOB_NAME')
-    upload_to_gcs()
+    bucket_name = os.getenv('BUCKET_NAME')
+    blob_name = os.getenv('BLOB_NAME')
+    upload_to_gcs(bucket_name, blob_name)
