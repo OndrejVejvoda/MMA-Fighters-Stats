@@ -32,5 +32,5 @@ def upload_to_gcs(bucket_name, blob_name):
 if __name__ == "__main__":
     bucket_name = os.getenv('BUCKET_NAME')
     blob_name = os.getenv('BLOB_NAME')
-    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = os.getevn('GCP_SA_KEY')
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = os.getenv('GCP_SA_KEY')
     upload_to_gcs(bucket_name, blob_name)
