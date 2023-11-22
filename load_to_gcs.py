@@ -13,7 +13,8 @@ def upload_to_gcs(bucket_name, blob_name):
     fighters_data = scrape_data()  # Assuming this function returns the required data
     csv_data = fighters_data.to_csv(index=False)
 
-
+    print(csv_data)
+    
     try:
         # Authenticate and initialize the client
         #os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = service_account_key_path
@@ -31,4 +32,5 @@ def upload_to_gcs(bucket_name, blob_name):
 if __name__ == "__main__":
     bucket_name = os.getenv('BUCKET_NAME')
     blob_name = os.getenv('BLOB_NAME')
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = os.getevn('GCP_SA_KEY')
     upload_to_gcs(bucket_name, blob_name)
