@@ -3,17 +3,15 @@ import pandas as pd
 from google.cloud import storage
 from scrape_to_csv import *
 
-def upload_to_gcs(bucket_name, blob_name):
+def upload_to_gcs():
     # Configuration (better to move this to environment variables or a config file)
-    #bucket_name = 'fight_stats_data'
-    #blob_name = 'raw/raw_fighters.csv'
+    bucket_name = 'fight_stats_data'
+    blob_name = 'raw/raw_fighters.csv'
     service_account_key_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
 
      # Get data and convert to CSV format
     fighters_data = scrape_data()  # Assuming this function returns the required data
     csv_data = fighters_data.to_csv(index=False)
-
-    print(csv_data)
     
     try:
         # Authenticate and initialize the client
@@ -31,7 +29,5 @@ def upload_to_gcs(bucket_name, blob_name):
 
 if __name__ == "__main__":
     bucket_name = os.getenv('BUCKET_NAME')
-    print(bucket_name)
     blob_name = os.getenv('BLOB_NAME')
-    print(blob_name)
-    upload_to_gcs(bucket_name, blob_name)
+    upload_to_gcs()
