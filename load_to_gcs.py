@@ -6,8 +6,8 @@ from scrape_to_csv import *
 def upload_to_gcs():
     # Configuration (better to move this to environment variables or a config file)
     bucket_name = 'fight_stats_data'
-    blob_name = 'raw/raw_fighters.csv'
-    service_account_key_path = 'fightstats-404410-cf30b6b920d1.json'
+    blob_name = 'raw/test_raw_fighters.csv'
+    service_account_key_path = r'D:\Credentials\fightstats-404410-cf30b6b920d1.json'
 
      # Get data and convert to CSV format
     fighters_data = scrape_data()  # Assuming this function returns the required data
@@ -27,3 +27,6 @@ def upload_to_gcs():
         print(f"File uploaded to {bucket_name}/{blob_name}")
     except Exception as e:
         print(f"Failed to upload the file: {str(e)}")
+
+if __name__ == "__main__":
+    upload_to_gcs()
