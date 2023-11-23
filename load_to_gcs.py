@@ -20,6 +20,7 @@ def upload_to_gcs(bucket_name, blob_name):
         print(f"Failed to upload the file: {str(e)}")
 
 if __name__ == "__main__":
+    print(os.getenv('GITHUB_ACTIONS'))
     bucket_name = os.getenv('BUCKET_NAME')
     blob_name = os.getenv('BLOB_NAME')
     upload_to_gcs(bucket_name, blob_name)
