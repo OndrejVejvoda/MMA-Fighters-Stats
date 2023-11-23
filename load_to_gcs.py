@@ -3,9 +3,8 @@ import pandas as pd
 from google.cloud import storage
 from scrape_to_csv import *
 
-def upload_to_gcs(bucket_name, blob_name,GCP_KEY):
+def upload_to_gcs(bucket_name, blob_name):
     # Get data and convert to CSV format
-    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = GCP_KEY
     fighters_data = scrape_data()  # Assuming this function returns the required data
     csv_data = fighters_data.to_csv(index=False)
     
@@ -23,5 +22,4 @@ def upload_to_gcs(bucket_name, blob_name,GCP_KEY):
 if __name__ == "__main__":
     bucket_name = os.getenv('BUCKET_NAME')
     blob_name = os.getenv('BLOB_NAME')
-    SERVICE_ACCOUNT_KEY_PATH =  os.getenv('GCP_SA_KEY')
-    upload_to_gcs(bucket_name, blob_name,SERVICE_ACCOUNT_KEY_PATH)
+    upload_to_gcs(bucket_name, blob_name)
