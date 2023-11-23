@@ -18,7 +18,7 @@ jobs:
 
     - name: Install Dependencies
       run: |
-        pip install requests pandas beautifulsoup4 google-cloud-storage
+        pip install requests pandas beautifulsoup4 google-cloud-storage python-dotenv
         
     - name: Setup GCP Credentials
       run: |
@@ -30,6 +30,6 @@ jobs:
       env:
         BUCKET_NAME: ${{ vars.BUCKET_NAME }}
         BLOB_NAME: ${{ vars.BLOB_NAME }}
-        #GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/gcp-key.json
+        GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/gcp-key.json
       run: |
         python -m load_to_gcs  # Replace with your module/script command
