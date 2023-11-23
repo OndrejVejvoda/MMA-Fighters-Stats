@@ -1,0 +1,35 @@
+name: Scrape and Upload Data to GCS
+
+on: [push]
+  #schedule:
+    #- cron: '0 0 * * 0'  # Runs at 00:00 every Sunday
+
+jobs:
+  scrape-and-upload:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.12'  # Use your Python version
+
+    - name: Install Dependencies
+      run: |
+        pip install requests pandas beautifulsoup4 google-cloud-storage python-dotenv
+        
+    - name: Setup GCP Credentials
+      run: |
+        echo '${{ secrets.GCP_SA_KEY }}' > gcp-key.json
+      env:
+        GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+
+    - name: Run Scrape Script and Upload Data
+      env:
+        BUCKET_NAME: ${{ vars.BUCKET_NAME }}
+        BLOB_NAME: ${{ vars.BLOB_NAME }}
+        GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/gcp-key.json
+      run: |
+        python -m load_to_gcs  # Replace with your module/script command
