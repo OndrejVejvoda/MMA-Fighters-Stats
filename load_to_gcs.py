@@ -2,10 +2,9 @@ import os
 import pandas as pd
 from google.cloud import storage
 from scrape_to_csv import *
-from dotenv import load_dotenv
 
 
-def upload_to_gcs(bucket_name, blob_name,service_account_key_path):
+def upload_to_gcs(bucket_name, blob_name):
 
      # Get data and convert to CSV format
     fighters_data = scrape_data()  # Assuming this function returns the required data
@@ -14,7 +13,6 @@ def upload_to_gcs(bucket_name, blob_name,service_account_key_path):
 
     try:
         # Authenticate and initialize the client
-        os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = service_account_key_path
         storage_client = storage.Client()
 
         # Get the bucket object and upload the data
@@ -27,9 +25,8 @@ def upload_to_gcs(bucket_name, blob_name,service_account_key_path):
         print(f"Failed to upload the file: {str(e)}")
 
 if __name__ == "__main__":
-    load_dotenv()
+
     bucket_name = os.getenv('BUCKET_NAME')
     blob_name = os.getenv('BLOB_NAME')
-    service_account_key_path =  os.getenv('SERVICE_ACCOUNT_KEY_PATH')
-    upload_to_gcs(bucket_name, blob_name,service_account_key_path)
+    upload_to_gcs(bucket_name, blob_name)
 
