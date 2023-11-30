@@ -76,6 +76,8 @@ def scrape_data():
     urls = get_hyperlinks(chars)
     fighters = []  
     for url in urls:
-        fighters.append(get_fighters_stats(url))
+        result = get_fighters_stats(url)
+        if result is not None:
+            fighters.append(result)
     df = pd.DataFrame(fighters,columns=column_names)
     return df
