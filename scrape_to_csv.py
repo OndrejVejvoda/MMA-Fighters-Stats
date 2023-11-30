@@ -77,4 +77,5 @@ def scrape_data():
     fighters = []  
     for url in urls:
         fighters.append(get_fighters_stats(url))
-    return pd.DataFrame(fighters,columns=column_names)
+    df = pd.DataFrame(fighters,columns=column_names)
+    return df
