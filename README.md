@@ -1,4 +1,6 @@
 # UFC Fighter Statistics Project
+![DALL·E 2023-12-01 15 13 08 - A modern and minimalistic illustration for a project on MMA fighters and sports analysis, featuring an animated style MMA fighter silhouette in a boxi](https://github.com/OndrejVejvoda/MMA-Fighters-Stats/assets/49439520/04cbf4a5-d0b3-46f1-88b1-8eb94b3f987d)
+
 
 ## Description
 
