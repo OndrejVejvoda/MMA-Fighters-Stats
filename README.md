@@ -1,7 +1,5 @@
 # UFC Fighter Statistics Project
-![DALL·E 2023-12-01 15 13 08 - A modern and minimalistic illustration for a project on MMA fighters and sports analysis, featuring an animated style MMA fighter silhouette in a boxi](https://github.com/OndrejVejvoda/MMA-Fighters-Stats/assets/49439520/04cbf4a5-d0b3-46f1-88b1-8eb94b3f987d)
-
-
+![DALL·E 2023-12-01 15 13 08 - A modern and minimalistic illustration for a project on MMA fighters and sports analysis, featuring an animated style MMA fighter silhouette in a boxi (Small)](https://github.com/OndrejVejvoda/MMA-Fighters-Stats/assets/49439520/2b0111d6-fe12-4ee4-9576-f3c0b6065969)
 ## Description
 
 This project is designed to automate the process of scraping, processing, and managing UFC fighter statistics data. It consists of several interconnected components that work together to ensure the data is not only regularly updated but also cleaned and stored efficiently in Google Cloud Storage. The project's workflow is as follows:
