@@ -1,8 +1,8 @@
 name: Scrape and Upload Data to GCS
 
-on: [push]
-  #schedule:
-    #- cron: '0 0 * * 0'  # Runs at 00:00 every Sunday
+on: 
+  schedule:
+    - cron: '0 0 * * 0'  # Runs at 00:00 every Sunday
 
 jobs:
   scrape-and-upload:
